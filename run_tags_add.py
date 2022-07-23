@@ -67,7 +67,18 @@ def main():
     print("new tags", 新版本号)
     sha = repo.get_commits()[0].sha
     print("sha", sha)
-    repo.create_git_ref(f"refs/tags/{新版本号}", sha)
+    #repo.create_git_ref(f"refs/tags/{新版本号}", sha)
+    run = []
+    run.append(f'git config user.name github-actions')
+    run.append(f'git config user.email github-actions@github.com')
+    run.append(f'git tag -fa {新版本号} -m {新版本号}')
+    run.append(f'git push --tags -f')
+    # 运行命令
+    for cmd in run:
+        print(cmd)
+        os.system(cmd)
+
+
 
 
 if __name__ == "__main__":
