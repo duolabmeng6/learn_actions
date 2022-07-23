@@ -1,9 +1,9 @@
-name: 构建应用程序Windows_x64
+name: 写出版本号
 on:
-  push:
+#  push:
 #    branches: [ main ]
-    tags:
-      - '*'
+#    tags:
+#      - '*'
   workflow_dispatch:
 
 permissions: write-all
@@ -31,6 +31,6 @@ jobs:
     - name: Build
       run: |
         echo "hello"
-        python run.py
+        python run_output_version.py
 
 
