@@ -66,6 +66,7 @@ def main():
     # print("新版本号:", 新版本号)
     print("new tags", 新版本号)
     sha = repo.get_commits()[0].sha
+    print("sha", 新版本号)
     repo.create_git_ref(f"refs/tags/{新版本号}", sha)
 
 
