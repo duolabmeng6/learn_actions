@@ -1,0 +1,32 @@
+name: 构建应用程序Windows_x64
+on:
+  push:
+#    branches: [ main ]
+    tags:
+      - '*'
+  workflow_dispatch:
+
+permissions: write-all
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    environment: build
+    strategy:
+      matrix:
+        os: [windows-2022]
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        architecture: "x64"
+        cache: 'pip'
+    - name: Build
+      run: |
+        echo "hello"
+
+
