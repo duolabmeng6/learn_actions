@@ -28,5 +28,6 @@ jobs:
     - name: Build
       run: |
         echo "hello"
+        python run.py
 
 
