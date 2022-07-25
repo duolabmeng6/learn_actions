@@ -26,5 +26,5 @@ jobs:
           cache: pip
       - name: 检查python版本
         run: |
-          python -v
-          pip -v
+          python -V
+          pip -V
