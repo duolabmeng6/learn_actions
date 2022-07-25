@@ -21,8 +21,9 @@ jobs:
       - name: 检查目录文件
         run: ls -al
       - name: 安装Python
-        uses: actions/setup-python@v4.1.0
+        uses: actions/setup-python@v4
         with:
+          python-version: 3.9
           cache: pip
       - name: 检查python版本
         run: |
