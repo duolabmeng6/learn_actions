@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
+      - name: 检查目录文件
+        run: ls
       - name: 下载依赖文件
         run: echo 正在下载依赖文件
       - name: 构建软件
