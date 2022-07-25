@@ -35,7 +35,7 @@ jobs:
             echo 读入环境变量 $SERVER
             echo 不能使用中文环境变量 $应用名称
             echo ${{ format('文本格式化 {0} {1} {2}', '苹果', '雪梨', '香蕉') }}
-            echo ${{ format('服务器 {0} {1}', env.SERVER, env.应用名称) }}
+            echo ${{ format('服务器 {0}', env.SERVER) }}
             
       - name: 下载依赖文件
         run: echo 正在下载依赖文件
