@@ -44,6 +44,7 @@ jobs:
           python run_success.py
       - name: 检查 step_run_success 输出是否包含运行成功
         run: |
+          echo ${{ steps.step_run_success.outputs }}
           echo ${{ contains( steps.step_run_success.outputs, '运行成功') }}
           echo "已检查室运行成功的可以继续"
 
