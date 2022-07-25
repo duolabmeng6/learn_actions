@@ -1,0 +1,19 @@
+name: 学习
+
+on:
+  workflow_dispatch:
+
+jobs:
+  学习:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 运行一句脚本
+        run: echo Hello, world!
+
+
+      - name: 运行多行脚本
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
