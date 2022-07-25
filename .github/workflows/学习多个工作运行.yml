@@ -12,6 +12,7 @@ env:
   
 jobs:
   task1:
+    name: 任务1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,8 +32,11 @@ jobs:
           echo $mytxt
       - name: 读入环境变量
         run: |
-            echo {{ $SERVER }}
-            echo {{ $应用名称 }}
+            echo 读入环境变量 $SERVER
+            echo 不能使用中文环境变量 $应用名称
+            echo ${{ format('文本格式化 {0} {1} {2}', '苹果', '雪梨', '香蕉') }}
+            echo ${{ format('服务器 {0} {1}', $SERVER, $应用名称) }}
+            
       - name: 下载依赖文件
         run: echo 正在下载依赖文件
       - name: 构建软件
@@ -50,6 +54,7 @@ jobs:
 
   task2:
     needs: task1
+    name: 任务2
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
