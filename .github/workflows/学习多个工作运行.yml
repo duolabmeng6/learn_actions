@@ -76,5 +76,7 @@ jobs:
         run: |
           echo ${{ format('读取环境变量aaa {0}', env.aaa) }}
           echo ${{ format('读取环境变量bbb {0}', env.bbb) }}
-      - name: 读入上一次工作的值
-        run: echo ${{needs.task1.outputs.output1}} ${{needs.task1.outputs.output2}}
+      - name: 读取task1的输出
+        run: |
+          echo ${{ format('output1 {0}', needs.task1.outputs.output1) }}
+          echo ${{ format('output2 {0}', needs.task1.outputs.output2) }}
