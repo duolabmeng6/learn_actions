@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
+        with:
+          submodules: recursive
       - name: 运行一句脚本
-        run: echo Hello, world!
-
-
+        run: echo 你好
       - name: 运行多行脚本
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo 大家好
+          echo 我叫哆啦b梦
