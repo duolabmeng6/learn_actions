@@ -18,6 +18,9 @@ jobs:
         run:  |
           echo "Hello World" >> hello.txt
           ls -al
+      - name: 读入文件
+          文本内容=$(cat hello.txt)
+          echo $文本内容
         
       - name: 下载依赖文件
         run: echo 正在下载依赖文件
