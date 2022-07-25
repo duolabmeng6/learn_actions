@@ -6,15 +6,36 @@ on:
   workflow_dispatch:
 
 jobs:
-  s1:
+  task1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: 运行一句脚本
-        run: echo 你好
-      - name: 运行多行脚本
+      - name: 下载依赖文件
+        run: echo 正在下载依赖文件
+      - name: 构建软件
         run: |
-          echo 大家好
-          echo 我叫哆啦b梦
+          echo 构建软件
+          echo 构建完成
+      - name: 测试软件
+        run: |
+          echo 测试软件
+          echo 123456789
+          echo 测试通过
+      - name: 检查上一步的输出
+        run: |
+          echo 不知道咋写等一下查
+
+  task2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: 下载构建产物
+        run: echo 下载构建产物
+      - name: 发布文件
+        run: |
+          echo 发布文件
+          echo 发布完成
