@@ -20,49 +20,7 @@ jobs:
           submodules: recursive
       - name: 检查目录文件
         run: ls -al
-      - name: 写出文件
-        run:  |
-          echo "Hello World" >> hello.txt
-          ls -al
-      - name: 读入文件
-        run:  |
-          ls -al
-          cat hello.txt
-          mytxt=$(cat hello.txt)
-          echo $mytxt
-      - name: 读入环境变量
-        run: |
-            echo 读入环境变量 $SERVER
-            echo 不能使用中文环境变量 $应用名称
-            echo ${{ format('文本格式化 {0} {1} {2}', '苹果', '雪梨', '香蕉') }}
-            echo ${{ format('服务器 {0}', env.SERVER) }}
-            
-      - name: 下载依赖文件
-        run: echo 正在下载依赖文件
-      - name: 构建软件
-        run: |
-          echo 构建软件
-          echo 构建完成
-      - name: 测试软件
-        run: |
-          echo 测试软件
-          echo 123456789
-          echo 测试通过
-      - name: 检查上一步的输出
-        run: |
-          echo 不知道咋写等一下查
-
-  task2:
-    needs: task1
-    name: 任务2
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+      - name: 安装Python
+        uses: actions/setup-python@v4.1.0
         with:
-          submodules: recursive
-      - name: 下载构建产物
-        run: echo 下载构建产物
-      - name: 发布文件
-        run: |
-          echo 发布文件
-          echo 发布完成
+          cache: pip
