@@ -43,8 +43,8 @@ jobs:
         run: |
           python run_success.py
       - name: 检查 step_run_success 输出是否包含运行成功
-        if: ${{ contains( steps.step_run_success.outputs, '运行成功') }}
         run: |
+          echo ${{ contains( steps.step_run_success.outputs, '运行成功') }}
           echo "已检查室运行成功的可以继续"
 
       - name: 运行 python 脚本 run_error.py
@@ -52,8 +52,8 @@ jobs:
         run: |
           python run_error.py
       - name: 检查 run_error 输出是否包含运行成功
-        if: ${{ contains( steps.run_error.outputs, '运行成功') }}
         run: |
+          echo ${{ contains( steps.run_error.outputs, '运行成功') }}
           echo "已检查室运行成功的可以继续"
 
 
