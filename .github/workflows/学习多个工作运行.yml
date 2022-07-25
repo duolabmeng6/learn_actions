@@ -26,7 +26,7 @@ jobs:
           python-version: 3.9
           cache: pip
       - name: 安装依赖文件
-          run: pip install -r requirements.txt
+        run: pip install -r requirements.txt
       - name: 检查python版本
         run: |
           python -V
