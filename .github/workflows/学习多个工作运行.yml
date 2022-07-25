@@ -45,10 +45,9 @@ jobs:
           echo ${{ format('读取环境变量aaa {0}', env.aaa) }}
           echo ${{ format('读取环境变量bbb {0}', env.bbb) }}
           echo ${{ format('读取环境变量myval {0}', env.myval) }}
-      - name: 输出变量
-        outputs:
-          output1: ${{ steps.step1.outputs.test }}
-          output2: ${{ steps.step2.outputs.test }}
+1      outputs:
+        output1: ${{ steps.step1.outputs.test }}
+        output2: ${{ steps.step2.outputs.test }}
       - id: step1
         run: echo "::set-output name=test::hello"
       - id: step2
