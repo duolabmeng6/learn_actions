@@ -21,8 +21,11 @@ def 读入文件变量文件(变量名,变量值):
     ic(读入文件变量文件)
 
 
-os.environ['bbb'] = 'hello' # 这个方式是不行的
 设置环境变量("aaa","我是python设置的环境变量")
-设置环境变量("myval","重新设置")
+设置环境变量("myval","重新设置的myval")
+
 查看系统所有环境变量()
+
+print("::set-output name=test::hello")
+
 exit(0)

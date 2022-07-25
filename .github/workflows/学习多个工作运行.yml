@@ -18,6 +18,7 @@ jobs:
     outputs:
       output1: ${{ steps.step1.outputs.test }}
       output2: ${{ steps.step2.outputs.test }}
+      output3: ${{ steps.step3.outputs.test }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -37,7 +38,9 @@ jobs:
           python -V
           pip -V
       - name: 运行 python 脚本
+        id: step3
         run: |
+
           echo ${{ format('读取环境变量myval {0}', env.myval) }}
           python actions_读入环境变量和写出环境变量.py
       - name: 运行 python 脚本 第二个
@@ -80,3 +83,4 @@ jobs:
         run: |
           echo ${{ format('output1 {0}', needs.task1.outputs.output1) }}
           echo ${{ format('output2 {0}', needs.task1.outputs.output2) }}
+          echo ${{ format('output3 {0}', needs.task1.outputs.output3) }}
