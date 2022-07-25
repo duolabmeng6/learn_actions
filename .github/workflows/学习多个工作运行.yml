@@ -31,8 +31,8 @@ jobs:
           echo $mytxt
       - name: 读入环境变量
         run: |
-            echo $SERVER
-            echo $应用名称
+            echo {{ $SERVER }}
+            echo {{ $应用名称 }}
       - name: 下载依赖文件
         run: echo 正在下载依赖文件
       - name: 构建软件
