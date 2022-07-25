@@ -19,6 +19,7 @@ jobs:
       output1: ${{ steps.step1.outputs.test }}
       output2: ${{ steps.step2.outputs.test }}
       output3: ${{ steps.step3.outputs.test }}
+      output4: ${{ steps.step3.outputs.test2 }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -84,3 +85,4 @@ jobs:
           echo ${{ format('output1 {0}', needs.task1.outputs.output1) }}
           echo ${{ format('output2 {0}', needs.task1.outputs.output2) }}
           echo ${{ format('output3 {0}', needs.task1.outputs.output3) }}
+          echo ${{ format('output4 {0}', needs.task1.outputs.output4) }}

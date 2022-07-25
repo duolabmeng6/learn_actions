@@ -26,6 +26,7 @@ def 读入文件变量文件(变量名,变量值):
 
 查看系统所有环境变量()
 
-print("::set-output name=test::hello")
+print("::set-output name=test::牛逼啊")
+print("::set-output name=test2::test厉害啊")
 
 exit(0)
