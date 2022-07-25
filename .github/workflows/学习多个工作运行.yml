@@ -43,7 +43,8 @@ jobs:
         run: |
           python run_success.py
       - name: 检查 step_run_success 输出是否包含运行成功
-        if: ${{ failure() && contains( steps.step_run_success.outputs, '运行成功'  ) }}
+        if: ${{ failure() && contains( steps.step_run_success.outputs, '运行成功') }}
+        
       - name: 运行 python 脚本
         id: step3
         run: |
