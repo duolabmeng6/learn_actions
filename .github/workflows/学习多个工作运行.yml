@@ -24,3 +24,7 @@ jobs:
         uses: actions/setup-python@v4.1.0
         with:
           cache: pip
+      - name: 检查python版本
+        run: |
+          python -v
+          pip -v
