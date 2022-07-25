@@ -25,10 +25,7 @@ def 读入文件变量文件(变量名, 变量值):
 
 
 def 设置输出变量(变量名, 变量值):
-    fprint(f"::set-output name={变量名}::{变量值}")
-
-    with open(环境变量文件路径, 'a') as f:
-        f.write(f"\n{变量名}={变量值}")
+    print(f"::set-output name={变量名}::{变量值}")
 
 
 设置环境变量("aaa", "我是python设置的环境变量")
