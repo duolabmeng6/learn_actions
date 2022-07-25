@@ -13,7 +13,12 @@ jobs:
         with:
           submodules: recursive
       - name: 检查目录文件
-        run: ls
+        run: ls -al
+      - name: 写出文件
+        run:  |
+          echo "Hello World" >> hello.txt
+          ls -al
+        
       - name: 下载依赖文件
         run: echo 正在下载依赖文件
       - name: 构建软件
