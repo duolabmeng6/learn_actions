@@ -7,6 +7,7 @@ on:
 
 env:
   SERVER: production
+  myval: myval
   应用名称: 学习1.0
   
   
@@ -34,6 +35,7 @@ jobs:
           pip -V
       - name: 运行 python 脚本
         run: |
+          echo ${{ format('读取环境变量myval {0}', env.myval) }}
           python actions_读入环境变量和写出环境变量.py
       - name: 运行 python 脚本 第二个
         run: |
@@ -42,6 +44,7 @@ jobs:
         run: |
           echo ${{ format('读取环境变量aaa {0}', env.aaa) }}
           echo ${{ format('读取环境变量bbb {0}', env.bbb) }}
+          echo ${{ format('读取环境变量myval {0}', env.myval) }}
       - name: 输出变量
         outputs:
           output1: ${{ steps.step1.outputs.test }}
