@@ -29,3 +29,6 @@ jobs:
         run: |
           python -V
           pip -V
+      - name: 运行 python 脚本
+        run: |
+          python actions_读入环境变量和写出环境变量.py
