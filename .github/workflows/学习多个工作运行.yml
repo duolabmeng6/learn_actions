@@ -28,6 +28,7 @@ jobs:
           echo 不知道咋写等一下查
 
   task2:
+    needs: task1
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
