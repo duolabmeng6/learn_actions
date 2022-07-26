@@ -39,7 +39,7 @@ jobs:
           echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
       - name: 发布资产文件
-        uses: ncipollo/release-action@v1 # 发布版本
+        uses: ncipollo/release-action@v1 # 发布版本 
         with:
           allowUpdates: true
           draft: true
