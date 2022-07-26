@@ -15,6 +15,7 @@ permissions:
   contents: read
 
 jobs:
+  name : 信息发布
   update_release_draft:
     permissions:
       contents: write
@@ -33,14 +34,14 @@ jobs:
         run: echo "::set-output name=tag_name::" + ${{ steps.create_release.outputs.tag_name }}
 
   release:
-      needs: update_release_draft
+    name : 发布资产
+    needs: update_release_draft
       - name: 构建软件
         run: |
           mkdir down
           echo "123456789" >> ./down/QtEasyDesigner.exe
           echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
-
       - name: 发布资产文件
         uses: softprops/action-gh-release@v1
         with:
