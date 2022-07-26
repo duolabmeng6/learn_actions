@@ -14,8 +14,8 @@ on:
 permissions: write-all
 
 jobs:
-  name : 信息发布
   update_release_draft:
+    name : 信息发布
     runs-on: ubuntu-latest
     steps:
       # 写出版本号以及变化记录
