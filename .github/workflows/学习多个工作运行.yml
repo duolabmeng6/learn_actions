@@ -58,6 +58,7 @@ jobs:
           pip install -r requirements.txt
       - name: 下载工程文件
         uses: actions/download-artifact@v3
+        id: download
         with:
           name: content.txt
           path: ./down/
