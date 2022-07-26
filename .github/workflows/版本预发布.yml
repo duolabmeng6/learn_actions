@@ -43,7 +43,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true # 覆盖文件 
-          #draft: true # 草稿 自己可见   
+          #draft: true # 草稿 自己可见11111
           tag: ${{ steps.create_release.outputs.tag_name }} # 版本号 v0.1.0
           body: ${{ steps.create_release.outputs.body }} # 输出的内容
           artifacts: "./down/*"
