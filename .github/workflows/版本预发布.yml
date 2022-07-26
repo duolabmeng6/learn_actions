@@ -31,16 +31,6 @@ jobs:
       - name: 输出变量
         run: |
           echo ${{ format('tag_name {0}', steps.create_release.outputs.tag_name ) }} 
-
-  releaseFile:
-    name : 发布资产 
-    needs: update_release_draft
-    runs-on: ubuntu-latest
-    steps:
-      - name: 输出变量
-        run: |
-          echo ${{ format('tag_name {0}', needs.update_release_draft.outputs.tag_name ) }} 
-
       - name: 构建软件
         run: |
           mkdir down
@@ -48,10 +38,11 @@ jobs:
           echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
       - name: 发布资产文件
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          draft: true # 草稿别人看不见 需要手动发布1
-          generate_release_notes: false
-          tag_name: ${{ needs.update_release_draft.outputs.tag_name }} # v0.1.1
-          files: ./down/*
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./down/*
+
