@@ -49,6 +49,7 @@ jobs:
 
       - name: 检查 step_run_success 输出是否包含运行成功
         run: |
+          echo cat changed-fields.out
           echo ${{ steps.step_run_success.output }}
           
           echo ${{ contains( steps.step_run_success.output, '运行成功') }}
