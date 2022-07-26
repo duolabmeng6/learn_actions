@@ -44,9 +44,8 @@ jobs:
       - name: 开始
         run: |
           echo ${{ format('version {0}', env.version ) }}
-          echo ${{ format('version {0}', needs.jobs1.outputs.version ) }}
-          echo ${{ format('body {0}', env.body ) }}
-          echo ${{ format('body {0}', needs.jobs1.outputs.body ) }}
+          echo "body"
+          echo env.body
 
 
           mkdir down
