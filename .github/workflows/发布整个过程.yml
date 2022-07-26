@@ -31,7 +31,8 @@ jobs:
       - name: 输出变量 # 查看发布的版本
         run: |
           echo ${{ format('tag_name {0}', steps.create_release.outputs.tag_name ) }} 
-          echo ${{ format('Version {0}', env.Version ) }} 
+          echo ${{ format('Version {0}', env.Version ) }}
+          echo ${{ format(Version={0}', steps.create_release.outputs.tag_name ) }}  >> $GITHUB_ENV
 
   jobs2:
     needs: jobs1
@@ -43,6 +44,8 @@ jobs:
           submodules: recursive
       - name: 开始
         run: |
+          echo ${{ format('tag_name {0}', steps.create_release.outputs.tag_name ) }} 
+          echo ${{ format('Version {0}', env.Version ) }}
           mkdir down
           echo "123456789" >> ./down/QtEasyDesigner.exe
           ls -al
