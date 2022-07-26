@@ -33,7 +33,7 @@ jobs:
 
       - name: 运行 python 写出文件
         run: |
-          python actions_写出文件.py # content.txt
+          echo "123456789" >> content.txt
 
       - name: 发布资产文件
         uses: softprops/action-gh-release@v1
