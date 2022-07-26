@@ -48,6 +48,7 @@ jobs:
           echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
       - name: 发布资产文件
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
           draft: true # 草稿别人看不见 需要手动发布1
