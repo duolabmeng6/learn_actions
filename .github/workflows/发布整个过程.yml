@@ -29,8 +29,10 @@ jobs:
       - name: 定义输出变量 # 查看发布的版本
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.tag_name ) }}
-          echo "body"
-          echo ${{steps.create_version.outputs.body}}
+          #echo "body"
+          #echo ${{steps.create_version.outputs.body}}
+          ${{steps.create_version.outputs.body}} >> body.txt
+          cat body.txt
 
   jobs2:
     needs: jobs1
@@ -46,8 +48,8 @@ jobs:
       - name: 开始
         run: |
           echo ${{ format('version {0}', env.version ) }}
-          echo "body"
-          echo ${{ env.body }}
+          #echo "body"
+          #echo ${{ env.body }}
 
 
           mkdir down
