@@ -1,4 +1,4 @@
-name: 版本信息发布
+name: 自动合并请求
 
 on:
   pull_request:
@@ -8,10 +8,11 @@ permissions: write-all
 
 jobs:
   update_release_draft:
-    name : 信息发布
+    name : 自动合并请求
     runs-on: ubuntu-latest
     steps:
-      - uses: KeisukeYamashita/auto-pull-request-merge@v1
-          with:
-            intervalSeconds: 10
-            timeoutSeconds: 30
+      - name: 自动合并请求 # 发布文件
+        uses: KeisukeYamashita/auto-pull-request-merge@v1
+        with:
+          intervalSeconds: 10
+          timeoutSeconds: 30
