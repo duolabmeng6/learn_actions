@@ -29,10 +29,6 @@ jobs:
       - name: 定义输出变量 # 查看发布的版本
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.tag_name ) }}
-          echo ${{ format('version={0}', steps.create_version.outputs.tag_name ) }}  >> $GITHUB_ENV
-          # echo ${{ format('::set-output name=version::{0}', steps.create_version.outputs.tag_name ) }}
-          # echo ${{ format('::set-output name=body::{0}', steps.create_version.outputs.body ) }}
-
 
   jobs2:
     needs: jobs1
