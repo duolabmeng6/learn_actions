@@ -27,7 +27,7 @@ jobs:
         # 配置文件在 .github/release-drafter.yml
         with:
           config-name: release-drafter.yml
-          publish: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 输出变量
