@@ -1,0 +1,30 @@
+name: 自动合并请求
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize]
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+  workflow_dispatch:
+
+permissions: write-all
+
+jobs:
+  update_release_draft:
+    name : 自动合并请求
+    runs-on: ubuntu-latest
+    steps:
+     - name: Run merge script
+      uses: klay-ke/auto-merge-pr@master
+      id: merge-pr
+      with:
+        #send-to-dingtalk-group: true
+        #dingtalk-access-token: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
+        #dingtalk-secret: ${{ secrets.DINGTALK_SECRET }}
+        #maintainer-team-name: ${{ secrets.MAINTAINER_TEAM_NAME }}
+        gh-token: ${{ secrets.GH_TOKEN }}
+        #ci-command: 'bash ./build.sh'
