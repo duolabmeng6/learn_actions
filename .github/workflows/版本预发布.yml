@@ -16,9 +16,9 @@ permissions: write-all
 jobs:
   update_release_draft:
     name : 信息发布
+    runs-on: ubuntu-latest
     outputs:
       tag_name: ${{ steps.create_release.outputs.tag_name }}
-    runs-on: ubuntu-latest
     steps:
       # 写出版本号以及变化记录
       - uses: release-drafter/release-drafter@v5
