@@ -41,5 +41,4 @@ jobs:
         #if: startsWith(github.ref, 'refs/tags/')
         with:
           name: ${{ steps.create_release.outputs.name }}
-          tag_name: ${{ steps.create_release.outputs.name }}
           files: content.txt
