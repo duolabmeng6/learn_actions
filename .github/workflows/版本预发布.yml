@@ -42,8 +42,7 @@ jobs:
         with:
           allowUpdates: true
           draft: true
-          omitBodyDuringUpdate: true
-          omitDraftDuringUpdate: true
           tag: ${{ steps.create_release.outputs.tag_name }}
+          body: ${{ steps.create_release.outputs.body }}
           artifacts: "./down/*"
           token: ${{ secrets.GITHUB_TOKEN }}
