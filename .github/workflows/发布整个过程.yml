@@ -37,18 +37,18 @@ jobs:
     name : window软件
     runs-on: ubuntu-latest
       steps:
-      - name: 构建软件
-        run: |
-          mkdir down
-          echo "123456789" >> ./down/QtEasyDesigner.exe
-          ls -al
+        - name: 构建软件
+          run: |
+            mkdir down
+            echo "123456789" >> ./down/QtEasyDesigner.exe
+            ls -al
 
   jobs3:
     name : macos软件
     runs-on: ubuntu-latest
       steps:
-      - name: 构建软件
-        run: |
-          mkdir down
-          echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
-          ls -al
+        - name: 构建软件
+          run: |
+            mkdir down
+            echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
+            ls -al
