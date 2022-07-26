@@ -25,6 +25,6 @@ jobs:
         #send-to-dingtalk-group: true
         #dingtalk-access-token: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
         #dingtalk-secret: ${{ secrets.DINGTALK_SECRET }}
-        #maintainer-team-name: ${{ secrets.MAINTAINER_TEAM_NAME }}
+        maintainer-team-name: duolabemng6
         gh-token: ${{ secrets.GITHUB_TOKEN }}
         #ci-command: 'bash ./build.sh'
