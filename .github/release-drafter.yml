@@ -23,6 +23,6 @@ version-resolver:
       - 'patch'
   default: patch
 template: |
-  ## 测试软件名称
+  # Qt Easy Designer
 
   $CHANGES
