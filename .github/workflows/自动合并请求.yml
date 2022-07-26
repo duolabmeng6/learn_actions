@@ -18,13 +18,9 @@ jobs:
     name : 自动合并请求
     runs-on: ubuntu-latest
     steps:
-    - name: Run merge script
-      uses: klay-ke/auto-merge-pr@main
-      id: merge-pr
-      with:
-        #send-to-dingtalk-group: true
-        #dingtalk-access-token: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
-        #dingtalk-secret: ${{ secrets.DINGTALK_SECRET }}
-        maintainer-team-name: duolabemng6
-        gh-token: ${{ secrets.GITHUB_TOKEN }}
-        #ci-command: 'bash ./build.sh'
+      auto-merge:
+        - name: Merge
+          uses: KeisukeYamashita/auto-pull-request-merge@v1
+          with:
+            intervalSeconds: 10
+            timeoutSeconds: 30
