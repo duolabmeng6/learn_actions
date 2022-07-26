@@ -34,10 +34,12 @@ jobs:
       - name: 运行 python 写出文件
         run: |
           echo "123456789" >> content.txt
+          ls -al
 
       - name: 发布资产文件
         uses: softprops/action-gh-release@v1
         #if: startsWith(github.ref, 'refs/tags/')
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
+          draft: true
           files: content.txt
