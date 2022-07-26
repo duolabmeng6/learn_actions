@@ -27,7 +27,6 @@ jobs:
         # 配置文件在 .github/release-drafter.yml
         with:
           config-name: release-drafter.yml
-          disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -43,6 +42,6 @@ jobs:
         with:
           draft: true # 草稿别人看不见 需要手动发布1
           generate_release_notes: false
-          name: ${{ steps.create_release.outputs.name }} # v0.1.1
-          tag_name: ${{ steps.create_release.outputs.name }} # v0.1.1
+          name: ${{ steps.create_release.outputs.tag_name }} # v0.1.1
+          tag_name: ${{ steps.create_release.outputs.tag_name }} # v0.1.1
           files: ./down/*
