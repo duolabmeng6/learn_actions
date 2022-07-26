@@ -26,5 +26,5 @@ jobs:
         #dingtalk-access-token: ${{ secrets.DINGTALK_ACCESS_TOKEN }}
         #dingtalk-secret: ${{ secrets.DINGTALK_SECRET }}
         #maintainer-team-name: ${{ secrets.MAINTAINER_TEAM_NAME }}
-        gh-token: ${{ secrets.GH_TOKEN }}
+        gh-token: ${{ secrets.GITHUB_TOKEN }}
         #ci-command: 'bash ./build.sh'
