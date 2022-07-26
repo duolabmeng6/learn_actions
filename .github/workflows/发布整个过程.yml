@@ -1,0 +1,52 @@
+name: 发布软件
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions: write-all
+
+env:
+  SERVER: production
+  Version: 1.0
+
+jobs:
+  jobs1:
+    name : 构建版本号和变更信息
+    runs-on: ubuntu-latest
+    outputs:
+      tag_name: ${{ steps.create_release.outputs.tag_name }}
+    steps:
+      # 写出版本号以及变化记录
+      - uses: release-drafter/release-drafter@v5
+        id: create_release
+        # 配置文件在 .github/release-drafter.yml
+        with:
+          config-name: release-drafter.yml # 配置文件
+          prerelease: false # 禁止发布 防止重复发布2次
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 输出变量 # 查看发布的版本
+        run: |
+          echo ${{ format('tag_name {0}', steps.create_release.outputs.tag_name ) }} 
+          echo ${{ format('Version {0}', env.Version ) }} 
+
+  jobs2:
+    name : window软件
+    runs-on: ubuntu-latest
+      - name: 构建软件
+        run: |
+          mkdir down
+          echo "123456789" >> ./down/QtEasyDesigner.exe
+          ls -al
+
+  jobs3:
+    name : macos软件
+    runs-on: ubuntu-latest
+      - name: 构建软件
+        run: |
+          mkdir down
+          echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
+          ls -al
