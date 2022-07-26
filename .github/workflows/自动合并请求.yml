@@ -1,9 +1,10 @@
-name: 自动合并请求
+name: 版本信息发布
 
-on: 
-  pull_request
-  workflow_dispatch
-  
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions: write-all
 jobs:
   auto-merge:
     - name: Merge
