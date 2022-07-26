@@ -32,7 +32,6 @@ jobs:
       - name: 输出变量
         run: |
           echo ${{ format('tag_name {0}', steps.create_release.outputs.tag_name ) }} 
-          echo ${{ format('body {0}', steps.create_release.outputs.body ) }} 
       - name: 构建软件
         run: |
           mkdir down
