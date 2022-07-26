@@ -64,5 +64,6 @@ jobs:
           path: ./down/
       - name: 读取文件内容
         run: |
+          cd ${{steps.download.outputs.download-path}}
           echo ${{steps.download.outputs.download-path}}
-          cat ${{steps.download.outputs.download-path}}
+          cat content.txt
