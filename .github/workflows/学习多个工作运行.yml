@@ -60,7 +60,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: content.txt
-          path: content.txt
+          path: ./down/
       - name: 读取文件内容
         run: |
-          cat content.txt
+          echo ${{steps.download.outputs.download-path}}
+          cat ${{steps.download.outputs.download-path}}
