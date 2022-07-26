@@ -36,6 +36,7 @@ jobs:
   jobs2:
     name : window软件
     runs-on: ubuntu-latest
+      steps:
       - name: 构建软件
         run: |
           mkdir down
@@ -45,6 +46,7 @@ jobs:
   jobs3:
     name : macos软件
     runs-on: ubuntu-latest
+      steps:
       - name: 构建软件
         run: |
           mkdir down
