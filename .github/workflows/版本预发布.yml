@@ -30,6 +30,8 @@ jobs:
   releaseFile:
     name : 发布资产 
     needs: update_release_draft
+    runs-on: ubuntu-latest
+    steps:
       - name: 构建软件
         run: |
           mkdir down
