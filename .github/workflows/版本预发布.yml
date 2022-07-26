@@ -26,6 +26,9 @@ jobs:
           config-name: release-drafter.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 输出变量
+        run: |
+          echo ${{ format('tag_name {0}', steps.create_release.outputs.tag_name }} 
 
   releaseFile:
     name : 发布资产 
