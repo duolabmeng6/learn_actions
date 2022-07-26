@@ -16,6 +16,8 @@ permissions: write-all
 jobs:
   update_release_draft:
     name : 信息发布
+    outputs:
+      tag_name: ${{ steps.create_release.outputs.tag_name }}
     runs-on: ubuntu-latest
     steps:
       # 写出版本号以及变化记录
@@ -37,7 +39,7 @@ jobs:
     steps:
       - name: 输出变量
         run: |
-          echo ${{ format('tag_name {0}', jobs.update_release_draft.steps.create_release.outputs.tag_name ) }} 
+          echo ${{ format('tag_name {0}', needs.update_release_draft.outputs.tag_name ) }} 
 
       - name: 构建软件
         run: |
