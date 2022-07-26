@@ -17,4 +17,4 @@ def 读入文件(文件名):
         return f.read(-1)
 
 
-写到文件("content.txt","我叫哆啦b梦 大家好收费功能 add 123")
+写到文件("content.txt","我叫哆啦b梦 大家好收费功能 add 121233")
