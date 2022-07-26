@@ -10,7 +10,7 @@ permissions: write-all
 
 env:
   SERVER: production
-  Version: ${{ jobs.jobs1.create_release.outputs.tag_name }}
+  Version: test
 
 jobs:
   jobs1:
