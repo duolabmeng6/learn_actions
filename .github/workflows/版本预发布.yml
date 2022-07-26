@@ -41,6 +41,7 @@ jobs:
         uses: ncipollo/release-action@v1 # 发布版本
         with:
           allowUpdates: true
+          draft: true
           tag: ${{ steps.create_release.outputs.tag_name }}
           artifacts: "./down/*"
           token: ${{ secrets.GITHUB_TOKEN }}
