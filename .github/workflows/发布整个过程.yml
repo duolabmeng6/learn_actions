@@ -35,8 +35,8 @@ jobs:
     name: 构建window软件
     runs-on: ubuntu-latest
     env:
-      version: ${{ needs.jobs1.steps.create_version.outputs.version }}
-      body: ${{ needs.jobs1.steps.create_version.outputs.body }}
+      version: ${{ needs.jobs1.outputs.version }}
+      body: ${{ needs.jobs1.outputs.body }}
     steps:
       - uses: actions/checkout@v3
         with:
