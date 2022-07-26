@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Run merge script
-      uses: klay-ke/auto-merge-pr@master
+      uses: klay-ke/auto-merge-pr@main
       id: merge-pr
       with:
         #send-to-dingtalk-group: true
