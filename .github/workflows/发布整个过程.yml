@@ -45,12 +45,13 @@ jobs:
         run: |
           echo ${{ format('version {0}', env.version ) }}
       - name: 编译
+        run: |
           mkdir down
           echo "123456789" >> ./down/QtEasyDesigner.exe
           ls -al
       - name: 上传资产
+        run: |
           echo "上传资产"
-
 
   jobs3:
     needs: jobs2
@@ -62,8 +63,12 @@ jobs:
           submodules: recursive
       - name: 读入环境信息
         run: |
+          echo ${{ format('version {0}', env.version ) }}
+      - name: 编译
+        run: |
           mkdir down
           echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
       - name: 上传资产
+        run: |
           echo "上传资产"
