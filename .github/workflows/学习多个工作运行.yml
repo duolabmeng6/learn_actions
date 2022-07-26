@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: myfile
-          path: content.txt # path/to/artifact/
+          path: content.txt # 上传目录 path/to/artifact/
 
   task2:
     needs: task1
@@ -61,9 +61,10 @@ jobs:
         id: download
         with:
           name: myfile
-          path: ./down/
+          path: ./down/ # 下载目录
       - name: 读取文件内容
         run: |
           cd ${{steps.download.outputs.download-path}}
+          ls -al
           echo ${{steps.download.outputs.download-path}}
           cat content.txt
