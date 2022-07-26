@@ -42,10 +42,10 @@ jobs:
         with:
           submodules: recursive
       - name: 开始
-          run: |
-            mkdir down
-            echo "123456789" >> ./down/QtEasyDesigner.exe
-            ls -al
+        run: |
+          mkdir down
+          echo "123456789" >> ./down/QtEasyDesigner.exe
+          ls -al
 
   jobs3:
     needs: jobs2
@@ -56,6 +56,7 @@ jobs:
         with:
           submodules: recursive
       - name: 开始
-            mkdir down
-            echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
-            ls -al
+        run: |
+          mkdir down
+          echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
+          ls -al
