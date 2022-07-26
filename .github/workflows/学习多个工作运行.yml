@@ -60,6 +60,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: content.txt
+          path: content.txt
       - name: 读取文件内容
         run: |
           cat content.txt
