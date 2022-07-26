@@ -30,7 +30,7 @@ jobs:
         run: echo "::set-output name=tag_name::" + ${{ steps.create_release.outputs.tag_name }}
 
   release:
-    name : 发布资产
+    name : 发布资产 
     needs: update_release_draft
       - name: 构建软件
         run: |
