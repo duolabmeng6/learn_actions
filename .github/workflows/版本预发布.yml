@@ -25,11 +25,11 @@ jobs:
         id: create_release
         # 配置文件在 .github/release-drafter.yml
         with:
-          config-name: release-drafter.yml
-          prerelease: false
+          config-name: release-drafter.yml # 配置文件
+          prerelease: false # 禁止发布 防止重复发布2次
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 输出变量
+      - name: 输出变量 # 查看发布的版本
         run: |
           echo ${{ format('tag_name {0}', steps.create_release.outputs.tag_name ) }} 
       - name: 构建软件
@@ -38,12 +38,12 @@ jobs:
           echo "123456789" >> ./down/QtEasyDesigner.exe
           echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
-      - name: 发布资产文件
+      - name: 发布资产文件 # 调用预发布的信息
         uses: ncipollo/release-action@v1 # 发布版本 
         with:
-          allowUpdates: true
-          draft: true
-          tag: ${{ steps.create_release.outputs.tag_name }}
-          body: ${{ steps.create_release.outputs.body }}
-          artifacts: "./down/*"
           token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true # 覆盖文件
+          draft: true # 草稿 自己可见
+          tag: ${{ steps.create_release.outputs.tag_name }} # 版本号 v0.1.0
+          body: ${{ steps.create_release.outputs.body }} # 输出的内容
+          artifacts: "./down/*"
