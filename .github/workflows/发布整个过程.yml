@@ -34,21 +34,28 @@ jobs:
           echo ${{ format('Version {0}', env.Version ) }} 
 
   jobs2:
-    name : window软件
+    needs: jobs1
+    name: 构建window软件
     runs-on: ubuntu-latest
-      steps:
-        - name: 构建软件
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: 开始
           run: |
             mkdir down
             echo "123456789" >> ./down/QtEasyDesigner.exe
             ls -al
 
   jobs3:
-    name : macos软件
+    needs: jobs2
+    name: 构建macos软件
     runs-on: ubuntu-latest
-      steps:
-        - name: 构建软件
-          run: |
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: 开始
             mkdir down
             echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
             ls -al
