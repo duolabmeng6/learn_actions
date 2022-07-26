@@ -38,23 +38,12 @@ jobs:
         run: |
           python -V
           pip -V
-      - name: 运行 python 脚本 run_success.py
-        id: step_run_success
-        run: |
-          python run_success.py > changed-fields.out
-          output="$(cat changed-fields.out)"
-          output="${output//$'\n'/\\n}"
-          output="${output// / }"
-          echo "::set-output name=output::$output"
-
-      - name: 检查 step_run_success 输出是否包含运行成功
-        run: |
-          echo cat changed-fields.out
-          echo ${{ steps.step_run_success.output }}
-          
-          echo ${{ contains( steps.step_run_success.output, '运行成功') }}
-          echo "已检查室运行成功的可以继续"
-
+      - name: 运行 python 脚本 run_success.py 检查输出是否包含运行成功
+        uses: GuillaumeFalourd/assert-command-line-output@v2
+        with:
+          command_line: python run_success.py
+          contains: 运行成功
+          expected_result: PASSED
       - name: 运行 python 脚本 run_error.py
         id: step_run_error
         run: |
