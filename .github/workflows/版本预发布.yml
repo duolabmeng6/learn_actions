@@ -31,9 +31,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 运行 python 写出文件
+      - name: 构建软件
         run: |
-          echo "123456789" >> content.txt
+          mkdir down
+          echo "123456789" >> ./down/QtEasyDesigner.exe
+          echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
 
       - name: 发布资产文件
@@ -42,4 +44,4 @@ jobs:
         with:
           draft: true
           tag_name: ${{ steps.create_release.outputs.name }}
-          files: content.txt
+          files: ./down/*
