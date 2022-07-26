@@ -35,6 +35,9 @@ jobs:
     needs: update_release_draft
     runs-on: ubuntu-latest
     steps:
+        - name: 输出变量
+        run: |
+          echo ${{ format('tag_name {0}', needs.update_release_draft.steps.create_release.outputs.tag_name ) }} 
       - name: 构建软件
         run: |
           mkdir down
