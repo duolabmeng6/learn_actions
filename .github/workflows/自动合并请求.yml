@@ -18,7 +18,7 @@ jobs:
     name : 自动合并请求
     runs-on: ubuntu-latest
     steps:
-     - name: Run merge script
+    - name: Run merge script
       uses: klay-ke/auto-merge-pr@master
       id: merge-pr
       with:
