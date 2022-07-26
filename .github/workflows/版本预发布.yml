@@ -3,7 +3,7 @@ name: 版本信息发布
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     types: [opened, reopened, synchronize]
   pull_request_target:
