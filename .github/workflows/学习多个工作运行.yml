@@ -41,12 +41,17 @@ jobs:
       - name: 运行 python 脚本 run_success.py
         id: step_run_success
         run: |
-          python run_success.py
+          python run_success.py > changed-fields.out
+          output="$(cat changed-fields.out)"
+          output="${output//$'\n'/\\n}"
+          output="${output// / }"
+          echo "::set-output name=output::$output"
+
       - name: 检查 step_run_success 输出是否包含运行成功
         run: |
-          echo ${{ join(steps.step_run_success.outputs.*, '\n')  }}
+          echo ${{ steps.step_run_success.output }}
           
-          echo ${{ contains( join(steps.step_run_success.outputs.*, '\n') , '运行成功') }}
+          echo ${{ contains( steps.step_run_success.output, '运行成功') }}
           echo "已检查室运行成功的可以继续"
 
       - name: 运行 python 脚本 run_error.py
