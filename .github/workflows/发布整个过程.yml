@@ -8,16 +8,13 @@ on:
 
 permissions: write-all
 
-env:
-  SERVER: production
-  Version: test
 
 jobs:
   jobs1:
     name : 构建版本号和变更信息
     runs-on: ubuntu-latest
     outputs:
-      tag_name: ${{ steps.create_release.outputs.tag_name }}
+      Version: ${{ steps.create_release.outputs.tag_name }}
     steps:
       # 写出版本号以及变化记录
       - uses: release-drafter/release-drafter@v5
@@ -35,12 +32,15 @@ jobs:
           echo ${{ format('Version={0}', steps.create_release.outputs.tag_name ) }}
           echo ${{ format('Version={0}', steps.create_release.outputs.tag_name ) }}  >> $GITHUB_ENV
           echo ${{ format('Version {0}', env.Version ) }}
+          echo ${{ format('::set-output name=Version::{0}', steps.create_release.outputs.tag_name ) }}
 
 
   jobs2:
     needs: jobs1
     name: 构建window软件
     runs-on: ubuntu-latest
+    env:
+      Version: ${{ needs.task1.outputs.Version }}
     steps:
       - uses: actions/checkout@v3
         with:
