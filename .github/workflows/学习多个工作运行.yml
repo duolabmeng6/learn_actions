@@ -48,7 +48,7 @@ jobs:
         uses: GuillaumeFalourd/assert-command-line-output@v2
         with:
           command_line: python run_error.py
-          contains: 运行成功
+          contains: 抛出一个异常
           expected_result: PASSED
       - name: 运行 python 脚本
         id: step3
