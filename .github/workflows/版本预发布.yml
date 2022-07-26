@@ -41,6 +41,5 @@ jobs:
         #if: startsWith(github.ref, 'refs/tags/')
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          draft: true
           name: ${{ steps.create_release.outputs.name }}
           files: content.txt
