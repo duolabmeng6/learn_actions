@@ -42,7 +42,7 @@ jobs:
         with:
           allowUpdates: true
           draft: true
-          omitDraftDuringUpdate: true1
+          omitDraftDuringUpdate: true
           tag: ${{ steps.create_release.outputs.tag_name }}
           artifacts: "./down/*"
           token: ${{ secrets.GITHUB_TOKEN }}
