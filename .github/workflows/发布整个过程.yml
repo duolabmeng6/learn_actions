@@ -29,10 +29,6 @@ jobs:
       - name: 定义输出变量 # 查看发布的版本
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.tag_name ) }}
-          #echo "body"
-          #echo ${{steps.create_version.outputs.body}}
-          ${{steps.create_version.outputs.body}} >> body.txt
-          cat body.txt
 
   jobs2:
     needs: jobs1
@@ -45,16 +41,16 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: 开始
+      - name: 读入环境信息
         run: |
           echo ${{ format('version {0}', env.version ) }}
-          #echo "body"
-          #echo ${{ env.body }}
-
-
+      - name: 编译
           mkdir down
           echo "123456789" >> ./down/QtEasyDesigner.exe
           ls -al
+      - name: 上传资产
+          echo "上传资产"
+
 
   jobs3:
     needs: jobs2
@@ -64,8 +60,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - name: 开始
+      - name: 读入环境信息
         run: |
           mkdir down
           echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
+      - name: 上传资产
+          echo "上传资产"
