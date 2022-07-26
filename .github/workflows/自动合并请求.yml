@@ -5,10 +5,13 @@ on:
   workflow_dispatch:
 
 permissions: write-all
+
 jobs:
-  auto-merge:
-    - name: Merge
-      uses: KeisukeYamashita/auto-pull-request-merge@v1
-      with:
-        intervalSeconds: 10
-        timeoutSeconds: 30
+  update_release_draft:
+    name : 信息发布
+    runs-on: ubuntu-latest
+    steps:
+      -uses: KeisukeYamashita/auto-pull-request-merge@v1
+        with:
+          intervalSeconds: 10
+          timeoutSeconds: 30
