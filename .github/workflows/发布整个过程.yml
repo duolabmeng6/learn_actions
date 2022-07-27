@@ -52,14 +52,14 @@ jobs:
           cache: 'pip'
       - name: 下载依赖文件
         run: pip install -r requirements.txt
-      - name: 构建exe
+      - name: 编译exe
         run: |
           pyinstaller --noconfirm --onefile --windowed "my_app.py"
       - name: 上传产物
         uses: actions/upload-artifact@v3
         with:
           name: window
-          path: ./down/*.exe
+          path: ./dist/*.exe
 
   jobs_macos:
     needs: jobs_v
