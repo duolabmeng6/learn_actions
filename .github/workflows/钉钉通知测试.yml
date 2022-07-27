@@ -23,7 +23,7 @@ jobs:
           {
             "msgtype": "link",
             "link": {
-                "text": "请前往查看 https://github.com/duolabmeng6/learn_actions/releases",
+                "text": "请前往查看",
                 "title": "QtEasyDesigner v0.0.1 版本已发布",
                 "messageUrl": "https://github.com/duolabmeng6/learn_actions/releases"
             }
