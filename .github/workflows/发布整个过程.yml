@@ -93,7 +93,7 @@ jobs:
       - name: 编译 MacOS.app
         run: |
           python run_write_version.py
-          pyinstaller --noconfirm --onefile --windowed "my_app.py"
+          pyinstaller --noconfirm --windowed "my_app.py"
       - name: 测试运行情况
         uses: GuillaumeFalourd/assert-command-line-output@v2
         with:
