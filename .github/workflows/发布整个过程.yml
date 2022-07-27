@@ -54,9 +54,12 @@ jobs:
           echo "上传资产"
 
   jobs3:
-    needs: jobs2
+    needs: jobs1
     name: 构建macos软件
     runs-on: ubuntu-latest
+    env:
+      version: ${{ needs.jobs1.outputs.version }}
+      body: ${{ needs.jobs1.outputs.body }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -72,3 +75,22 @@ jobs:
       - name: 上传资产
         run: |
           echo "上传资产"
+
+
+  jobs4:
+    needs: [jobs2,jobs3]
+    name: 发布版本
+    runs-on: ubuntu-latest
+    env:
+      version: ${{ needs.jobs1.outputs.version }}
+      body: ${{ needs.jobs1.outputs.body }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: 读入环境信息
+        run: |
+          echo ${{ format('version {0}', env.version ) }}
+      - name: 发布
+        run: |
+          echo "发布"
