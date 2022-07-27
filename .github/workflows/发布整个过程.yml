@@ -95,6 +95,7 @@ jobs:
         with:
           path: ./down/
       - name: 读入环境信息
+        working-directory: ./down
         run: |
           echo ${{ format('version {0}', env.version ) }}
           echo ${{steps.download.outputs.download-path}}
@@ -102,10 +103,11 @@ jobs:
           
       - name: 发布文件
         uses: ncipollo/release-action@v1
+        working-directory: ./down
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true # 覆盖文件 
           #draft: true # 草稿 自己可见 默认 自动发布新版本
           tag: ${{ env.version }} # 版本号 v0.1.0
           body: ${{ env.body }} # 输出的内容
-          artifacts: "/home/runner/work/learn_actions/learn_actions/down/window/*.exe"
+          artifacts: "*.exe,*.zip"
