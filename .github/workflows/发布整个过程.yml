@@ -49,9 +49,11 @@ jobs:
           mkdir down
           echo "123456789" >> ./down/QtEasyDesigner.exe
           ls -al
-      - name: 上传资产
-        run: |
-          echo "上传资产"
+      - name: 上传产物
+        uses: actions/upload-artifact@v3
+        with:
+          name: window
+          path: ./down/*
 
   jobs3:
     needs: jobs1
@@ -72,9 +74,11 @@ jobs:
           mkdir down
           echo "123456789" >> ./down/QtEasyDesigner_MacOS.zip
           ls -al
-      - name: 上传资产
-        run: |
-          echo "上传资产"
+      - name: 上传产物
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos
+          path: ./down/*
 
 
   jobs4:
@@ -88,9 +92,18 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
+      - name: 下载产物
+        uses: actions/download-artifact@v3
+        with:
+          path: ./down/
       - name: 读入环境信息
         run: |
           echo ${{ format('version {0}', env.version ) }}
+          ls -al
+          echo "---"
+          cd ./down
+          ls -al
+          
       - name: 发布文件
         uses: ncipollo/release-action@v1
         with:
