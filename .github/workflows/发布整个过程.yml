@@ -92,6 +92,8 @@ jobs:
       - name: 下载产物
         id: download
         uses: actions/download-artifact@v3
+        wite:
+          path: ./
       - name: 读入环境信息
         run: |
           echo ${{ format('version {0}', env.version ) }}
@@ -107,4 +109,4 @@ jobs:
           prerelease: true # 预发布 别人可以看到 
           tag: ${{ env.version }} # 版本号 v0.1.0
           body: ${{ env.body }} # 输出的内容
-          artifacts: "*.exe,*.zip"
+          artifacts: "./*.exe,./*.zip"
