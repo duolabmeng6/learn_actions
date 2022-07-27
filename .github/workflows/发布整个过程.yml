@@ -92,7 +92,7 @@ jobs:
       - name: 下载产物
         id: download
         uses: actions/download-artifact@v3
-        wite:
+        with:
           path: ./
       - name: 读入环境信息
         run: |
