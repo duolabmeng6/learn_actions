@@ -24,7 +24,7 @@ jobs:
         with:
           config-name: release-drafter.yml # 配置文件
           prerelease: false # 预发布
-          disable-autolabeler: true # 禁止自动标签
+          disable-autolabeler: true # 禁止自动标签49?
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 定义输出变量 # 查看发布的版本
