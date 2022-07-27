@@ -91,6 +91,12 @@ jobs:
       - name: 读入环境信息
         run: |
           echo ${{ format('version {0}', env.version ) }}
-      - name: 发布
-        run: |
-          echo "发布"
+      - name: 发布文件
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true # 覆盖文件 
+          #draft: true # 草稿 自己可见 默认 自动发布新版本
+          tag: ${{ env.version }} # 版本号 v0.1.0
+          body: ${{ env.body }} # 输出的内容
+          artifacts: "./down/*"
