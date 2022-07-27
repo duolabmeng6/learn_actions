@@ -54,6 +54,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: 编译exe
         run: |
+          python run_write_version.py
           pyinstaller --noconfirm --onefile --windowed "my_app.py"
       - name: 上传产物
         uses: actions/upload-artifact@v3
