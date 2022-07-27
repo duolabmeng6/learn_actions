@@ -89,16 +89,15 @@ jobs:
       version: ${{ needs.jobs1.outputs.version }}
       body: ${{ needs.jobs1.outputs.body }}
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: recursive
       - name: 下载产物
+        id: download
         uses: actions/download-artifact@v3
         with:
           path: ./down/
       - name: 读入环境信息
         run: |
           echo ${{ format('version {0}', env.version ) }}
+          echo ${{steps.download.outputs.download-path}}
           ls -R
           
       - name: 发布文件
