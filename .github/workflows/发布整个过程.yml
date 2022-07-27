@@ -99,18 +99,7 @@ jobs:
       - name: 读入环境信息
         run: |
           echo ${{ format('version {0}', env.version ) }}
-          ls -al
-          echo "cd down"
-          cd ./down
-          ls -al
-          echo "cd macos"
-          cd ./macos
-          ls -al
-          echo "cd window"
-          cd ./window
-          ls -al
-
-          
+          ls -R
           
       - name: 发布文件
         uses: ncipollo/release-action@v1
