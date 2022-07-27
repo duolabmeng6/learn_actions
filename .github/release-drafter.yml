@@ -25,4 +25,5 @@ version-resolver:
 template: |
   # Qt Easy Designer
 
+  版本变化
   $CHANGES

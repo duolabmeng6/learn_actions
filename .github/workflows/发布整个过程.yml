@@ -14,21 +14,19 @@ jobs:
     name : 构建版本号和变更信息
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.create_version.outputs.tag_name }}
-      body: ${{ steps.create_version.outputs.body }}
+      version: ${{ steps.create_version.outputs.tag_name }} # 版本号
+      body: ${{ steps.create_version.outputs.body }} # 版本变更内容
     steps:
-      # 写出版本号以及变化记录
       - uses: release-drafter/release-drafter@v5
         id: create_version
-        # 配置文件在 .github/release-drafter.yml
         with:
-          config-name: release-drafter.yml # 配置文件
+          config-name: release-drafter.yml # 配置文件在 .github/release-drafter.yml
           disable-autolabeler: true # 禁止自动标签
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 定义输出变量 # 查看发布的版本
+      - name: 查看变量
         run: |
-          echo ${{ format('version={0}', steps.create_version.outputs.tag_name ) }}
+          echo ${{ format('version={0}', steps.create_version.outputs.tag_name ) }} 
 
   jobs_window:
     needs: jobs_v
@@ -43,7 +41,7 @@ jobs:
           submodules: recursive
       - name: 读入环境信息
         run: |
-          echo ${{ format('version {0}', env.version ) }}
+          echo ${{ format('version {0}', env.version ) }} # 版本号
       - name: 编译环境设置 Python 3.9.13
         uses: actions/setup-python@v4
         with:
