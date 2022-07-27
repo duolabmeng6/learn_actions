@@ -23,7 +23,7 @@ jobs:
         # 配置文件在 .github/release-drafter.yml
         with:
           config-name: release-drafter.yml # 配置文件
-          prerelease: true # 预发布
+          prerelease: false # 预发布
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 定义输出变量 # 查看发布的版本
@@ -107,6 +107,7 @@ jobs:
           allowUpdates: true # 覆盖文件 
           #draft: true # 草稿 自己可见 默认 自动发布新版本
           prerelease: true # 预发布 别人可以看到  
+          omitPrereleaseDuringUpdate: true
           tag: ${{ env.version }} # 版本号 v0.1.0
           body: ${{ env.body }} # 输出的内容
           artifacts: "window/*.exe,macos/*.zip"
