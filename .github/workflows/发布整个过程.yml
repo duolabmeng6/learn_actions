@@ -82,7 +82,7 @@ jobs:
 
 
   jobs4:
-    needs: [jobs2,jobs3]
+    needs: [jobs1,jobs2,jobs3]
     name: 发布版本
     runs-on: ubuntu-latest
     env:
