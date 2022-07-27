@@ -92,10 +92,7 @@ jobs:
       - name: 下载产物
         id: download
         uses: actions/download-artifact@v3
-        with:
-          path: ./down/
       - name: 读入环境信息
-        working-directory: ./down
         run: |
           echo ${{ format('version {0}', env.version ) }}
           echo ${{steps.download.outputs.download-path}}
