@@ -1,0 +1,31 @@
+name: 钉钉通知测试
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+
+permissions: write-all
+
+
+jobs:
+  jobs_v:
+    name : 构建版本号和变更信息
+    runs-on: ubuntu-latest
+    steps:
+    - name: 发送钉钉通知
+      uses: zcong1993/actions-ding@master
+      with:
+        dingToken: ${{ secrets.DING_TOKEN }}
+        secret: ${{ secrets.DING_SECRET }} 
+        body: |
+          {
+            "msgtype": "link",
+            "link": {
+                "text": "请前往查看 https://github.com/duolabmeng6/learn_actions/releases",
+                "title": "版本已发布",
+                "picUrl": "",
+                "messageUrl": "https://www.dingtalk.com/s?__biz=MzA4NjMwMTA2Ng==&mid=2650316842&idx=1&sn=60da3ea2b29f1dcc43a7c8e4a7c97a16&scene=2&srcid=09189AnRJEdIiWVaKltFzNTw&from=timeline&isappinstalled=0&key=&ascene=2&uin=&devicetype=android-23&version=26031933&nettype=WIFI"
+            }
+          }
