@@ -10,7 +10,7 @@ categories:
   - title: '🧰 日常维护'
     label: '日常维护'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
-change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+change-title-escapes: '\<*_&'
 version-resolver:
   major:
     labels:
@@ -25,5 +25,7 @@ version-resolver:
 template: |
   # Qt Easy Designer
 
-  版本变化
   $CHANGES
+no-changes-template: ""
+
+  
