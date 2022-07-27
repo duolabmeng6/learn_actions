@@ -1,7 +1,7 @@
 
 # -*- coding: utf-8 -*-
 import sys
-
+import version
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"窗口6")
         MainWindow.resize(400, 360)
-        MainWindow.setWindowTitle(u"窗口6")
+        MainWindow.setWindowTitle(u"窗口6" + version.version)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.复选框1 = QCheckBox(self.centralwidget)
