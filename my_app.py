@@ -38,6 +38,12 @@ class MainWin(QMainWindow):
 
 
 if __name__ == '__main__':
+    传入参数 = sys.argv
+    if len(传入参数) == 2:
+        参数1 = 传入参数[1]
+        if 参数1 == "test":
+            print("app run success")
+            sys.exit(0)
     app = QApplication(sys.argv)
     window = MainWin()
     sys.exit(app.exec())

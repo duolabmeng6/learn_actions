@@ -56,6 +56,12 @@ jobs:
         run: |
           python run_write_version.py
           pyinstaller --noconfirm --onefile --windowed "my_app.py"
+      - name: 测试exe
+        uses: GuillaumeFalourd/assert-command-line-output@v2
+        with:
+          command_line: ./dist/my_app.exe test
+          contains: app run success
+          expected_result: PASSED
       - name: 上传产物
         uses: actions/upload-artifact@v3
         with:
