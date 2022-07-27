@@ -100,9 +100,15 @@ jobs:
         run: |
           echo ${{ format('version {0}', env.version ) }}
           ls -al
-          echo "---"
+          echo "cd down"
           cd ./down
           ls -al
+          echo "cd macos"
+          ls -al
+          echo "cd window"
+          ls -al
+
+          
           
       - name: 发布文件
         uses: ncipollo/release-action@v1
