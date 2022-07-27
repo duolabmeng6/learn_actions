@@ -103,7 +103,6 @@ jobs:
           
       - name: 发布文件
         uses: ncipollo/release-action@v1
-        working-directory: ./down
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true # 覆盖文件 
