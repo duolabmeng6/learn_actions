@@ -10,7 +10,7 @@ permissions: write-all
 
 
 jobs:
-  jobs1:
+  jobs_v:
     name : 构建版本号和变更信息
     runs-on: ubuntu-latest
     outputs:
@@ -23,7 +23,7 @@ jobs:
         # 配置文件在 .github/release-drafter.yml
         with:
           config-name: release-drafter.yml # 配置文件
-          prerelease: false # 预发布
+          prerelease: true # 预发布
           disable-autolabeler: true # 禁止自动标签49?
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,13 +31,13 @@ jobs:
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.tag_name ) }}
 
-  jobs2:
-    needs: jobs1
+  jobs_window:
+    needs: jobs_v
     name: 构建window软件
     runs-on: ubuntu-latest
     env:
-      version: ${{ needs.jobs1.outputs.version }}
-      body: ${{ needs.jobs1.outputs.body }}
+      version: ${{ needs.jobs_v.outputs.version }}
+      body: ${{ needs.jobs_v.outputs.body }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -56,13 +56,13 @@ jobs:
           name: window
           path: ./down/*
 
-  jobs3:
-    needs: jobs1
+  jobs_macos:
+    needs: jobs_v
     name: 构建macos软件
     runs-on: ubuntu-latest
     env:
-      version: ${{ needs.jobs1.outputs.version }}
-      body: ${{ needs.jobs1.outputs.body }}
+      version: ${{ needs.jobs_v.outputs.version }}
+      body: ${{ needs.jobs_v.outputs.body }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -83,12 +83,12 @@ jobs:
 
 
   jobs4:
-    needs: [jobs1,jobs2,jobs3]
+    needs: [jobs_v,jobs_window,jobs_macos]
     name: 发布版本
     runs-on: ubuntu-latest
     env:
-      version: ${{ needs.jobs1.outputs.version }}
-      body: ${{ needs.jobs1.outputs.body }}
+      version: ${{ needs.jobs_v.outputs.version }}
+      body: ${{ needs.jobs_v.outputs.body }}
     steps:
       - name: 下载产物
         id: download
@@ -106,9 +106,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true # 覆盖文件 
-          #draft: true # 草稿 自己可见 默认 自动发布新版本
-          prerelease: true # 预发布 别人可以看到  
-          #omitPrereleaseDuringUpdate: true
+          #draft: true # 草稿 自己可见 版本号会保持一样 默认是自动发布 latest
+          prerelease: true # 预发布 别人可以看到 版本号会继续加
           tag: ${{ env.version }} # 版本号 v0.1.0
           body: ${{ env.body }} # 输出的内容 
           artifacts: "window/*.exe,macos/*.zip"
