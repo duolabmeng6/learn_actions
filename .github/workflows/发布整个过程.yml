@@ -109,5 +109,5 @@ jobs:
           prerelease: true # 预发布 别人可以看到  
           #omitPrereleaseDuringUpdate: true
           tag: ${{ env.version }} # 版本号 v0.1.0
-          body: ${{ env.body }} # 输出的内容
+          body: ${{ env.body }} # 输出的内容 
           artifacts: "window/*.exe,macos/*.zip"
