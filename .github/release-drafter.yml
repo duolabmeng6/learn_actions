@@ -26,6 +26,7 @@ template: |
   # Qt Easy Designer
 
   $CHANGES
-no-changes-template: ""
+no-changes-template: |
+  快下载体验~
 
   
