@@ -106,7 +106,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true # 覆盖文件 
           #draft: true # 草稿 自己可见 默认 自动发布新版本
-          prerelease: true # 预发布 别人可以看到 
+          prerelease: true # 预发布 别人可以看到  
           tag: ${{ env.version }} # 版本号 v0.1.0
           body: ${{ env.body }} # 输出的内容
           artifacts: "window/*.exe,macos/*.zip"
