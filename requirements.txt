@@ -1,2 +1,4 @@
 icecream
 PyGithub
+PySide6
+pyinstaller

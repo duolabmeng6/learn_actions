@@ -24,7 +24,6 @@ jobs:
         with:
           config-name: release-drafter.yml # 配置文件
           disable-autolabeler: true # 禁止自动标签
-          disable-releaser: true # 禁止发布
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 定义输出变量 # 查看发布的版本
@@ -45,16 +44,22 @@ jobs:
       - name: 读入环境信息
         run: |
           echo ${{ format('version {0}', env.version ) }}
-      - name: 编译
+      - name: 编译环境设置 Python 3.9.13
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9.13"
+          architecture: "x64"
+          cache: 'pip'
+      - name: 下载依赖文件
+        run: pip install -r requirements.txt
+      - name: 构建exe
         run: |
-          mkdir down
-          echo "123456789" >> ./down/QtEasyDesigner.exe
-          ls -al
+          pyinstaller --noconfirm --onefile --windowed "my_app.py"
       - name: 上传产物
         uses: actions/upload-artifact@v3
         with:
           name: window
-          path: ./down/*
+          path: ./down/*.exe
 
   jobs_macos:
     needs: jobs_v
