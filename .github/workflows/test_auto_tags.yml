@@ -42,7 +42,7 @@ jobs:
         uses: duolabmeng6/action-Releases-log@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TEXT: $(cat .github/releasesText.md)
+          releasesText: $(cat .github/releasesText.md)
 
       - name: 查看版本号和更新日志
         run: |
