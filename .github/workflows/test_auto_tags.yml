@@ -24,6 +24,4 @@ jobs:
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
 
-          echo ${{ format('version={0}', NewVersions ) }}
-
           
