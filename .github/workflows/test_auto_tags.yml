@@ -37,9 +37,10 @@ jobs:
           python-version: '3.10'
           architecture: "x64"
           cache: 'pip'
-      - name: Build
+
+      - name: 查看提交记录
         run: |
-          echo "hello"
+          git log --pretty=format:"%an|%s|%h|%ad|%H" --date=format:"%Y-%m-%d %H:%M" $(git describe --tags --abbrev=0)^..HEAD
       - name: 查看更新日志
         run: |
           echo ${{ steps.create_update_log.outputs.UpdateLog }}
