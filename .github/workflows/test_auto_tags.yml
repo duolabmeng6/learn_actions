@@ -42,6 +42,7 @@ jobs:
         uses: duolabmeng6/action-Releases-log@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TEXT: "abc"
       - name: 查看版本号和更新日志
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
