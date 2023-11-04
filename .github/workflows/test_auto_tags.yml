@@ -43,7 +43,7 @@ jobs:
         run: |
           {
             echo 'JSON_RESPONSE<<EOF'
-            curl https://www.github.com
+            cat .github/releasesText.md
             echo EOF
           } >> "$GITHUB_ENV"
 
