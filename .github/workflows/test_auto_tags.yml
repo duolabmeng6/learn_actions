@@ -38,22 +38,13 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 读取模板
-        id: releasesText
-        run: |
-          {
-            echo 'JSON_RESPONSE<<EOF'
-            cat .github/releasesText.md
-            echo EOF
-          } >> "$GITHUB_ENV"
-
 
       - name: 获取更新日志
         id: create_body
         uses: duolabmeng6/action-Releases-log@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TEXT: "什么东西啊好烦{{变更内容}}"
+          FILE: .github/releasesText.md
 
       - name: 查看版本号和更新日志
         run: |
