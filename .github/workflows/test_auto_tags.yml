@@ -40,8 +40,6 @@ jobs:
       - name: Build
         run: |
           echo "hello"
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: 查看更新日志
         run: |
           echo ${{ steps.create_update_log.outputs.UpdateLog }}
