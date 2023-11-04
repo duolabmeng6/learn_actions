@@ -49,7 +49,7 @@ jobs:
 
       - name: 查看更新日志
         run: |
-          echo ${{ steps.create_body.outputs.Body }}
+          echo ${{ format('Body={0}', steps.create_body.outputs.Body ) }}
 
 
 
