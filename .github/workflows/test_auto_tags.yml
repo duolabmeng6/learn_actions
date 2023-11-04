@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       NewVersion: ${{ steps.create_version.outputs.NewVersion }} 
-      UpdateLog: ${{ steps.create_update_log.outputs.UpdateLog }} 
+      Body: ${{ steps.create_body.outputs.Body }} 
     steps:
       - uses: actions/checkout@v4
         with:
@@ -42,19 +42,15 @@ jobs:
           echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
 
       - name: 从提交记录中获取更新日志
-        id: create_update_log
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          architecture: "x64"
-          cache: 'pip'
+        id: create_body
+        uses: duolabmeng6/action-Releases-log@master
 
       - name: 查看提交记录
         run: |
           git log --pretty=format:"%an|%s|%h|%ad|%H" --date=format:"%Y-%m-%d %H:%M" $(git describe --tags --abbrev=0)^..HEAD
       - name: 查看更新日志
         run: |
-          echo ${{ steps.create_update_log.outputs.UpdateLog }}
+          echo ${{ steps.create_body.outputs.Body }}
 
 
 
