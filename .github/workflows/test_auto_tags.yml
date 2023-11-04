@@ -41,19 +41,19 @@ jobs:
       - name: 读取模板
         id: releasesText
         run: |
-          cat .github/releasesText.md
           {
-            echo 'releasesText<<EOF'
-            cat .github/releasesText.md
+            echo 'JSON_RESPONSE<<EOF'
+            curl https://www.github.com
             echo EOF
           } >> "$GITHUB_ENV"
+
 
       - name: 获取更新日志
         id: create_body
         uses: duolabmeng6/action-Releases-log@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          releasesText: ${{ steps.releasesText.outputs.releasesText }}
+          releasesText: ${{ steps.releasesText.outputs.JSON_RESPONSE }}
 
       - name: 查看版本号和更新日志
         run: |
