@@ -1,0 +1,26 @@
+name: test_auto_tags
+
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+#权限
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      NewVersion: ${{ steps.create_version.outputs.NewVersion }} 
+    steps:
+      - uses: actions/checkout@master
+      - uses: duolabmeng6/action-autotag-python@master
+        id: create_version
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: View variable
+        run: |
+          echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }} 
