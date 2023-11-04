@@ -50,8 +50,6 @@ jobs:
           echo "${{ steps.create_body.outputs.Body }}"
           echo "${{ steps.releasesText.outputs.releasesText }}"
 
-          
-
       - name: 发布文件
         uses: ncipollo/release-action@v1
         with:
