@@ -10,19 +10,40 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  jobs_v:
+    name: 构建版本号和变更信息
     runs-on: ubuntu-latest
     outputs:
       NewVersion: ${{ steps.create_version.outputs.NewVersion }} 
+      UpdateLog: ${{ steps.create_update_log.outputs.UpdateLog }} 
     steps:
-      - uses: actions/checkout@master
-      - uses: duolabmeng6/action-autotag-python@master
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: 递增版本号
         id: create_version
+        uses: duolabmeng6/action-autotag-python@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: View variable
+      - name: 查看版本号
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
 
+      - name: 从提交记录中获取更新日志
+        id: create_update_log
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          architecture: "x64"
+          cache: 'pip'
+      - name: Build
+        run: |
+          echo "hello"
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 查看更新日志
+        run: |
+          echo ${{ steps.create_update_log.outputs.UpdateLog }}
 
           
