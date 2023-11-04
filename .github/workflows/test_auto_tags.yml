@@ -1,13 +1,11 @@
 name: test_auto_tags
 
-
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
-#权限
 permissions:
   contents: write
 
@@ -24,4 +22,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: View variable
         run: |
-          echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }} 
+          echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
+          
