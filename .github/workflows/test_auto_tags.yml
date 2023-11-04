@@ -46,7 +46,4 @@ jobs:
           echo ${{ steps.create_update_log.outputs.UpdateLog }}
 
 
-          
-
-
-
+        
