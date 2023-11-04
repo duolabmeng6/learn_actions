@@ -44,6 +44,8 @@ jobs:
       - name: 从提交记录中获取更新日志
         id: create_body
         uses: duolabmeng6/action-Releases-log@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 查看提交记录
         run: |
