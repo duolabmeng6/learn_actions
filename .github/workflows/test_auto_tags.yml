@@ -47,23 +47,6 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 查看提交记录
-        run: |
-          git log --pretty=format:"%an|%s|%h|%ad|%H" --date=format:"%Y-%m-%d %H:%M" $(git describe --tags --abbrev=0)^..HEAD
-      - name: Set the value in bash
-        id: step_one
-        run: |
-          {
-            echo 'JSON_RESPONSE<<EOF'
-              # GoEasyDesigner 窗口设计师
-
-              奋斗了1小时，本次更新内容如下：
-
-              哈哈哈[多啦b梦 13b10d2](https://github.com/duolabmeng6/learn_actions/commit/13b10d28fee34f5dfb370d5b4b0778f26f59889f) 2023-11-04 19:31
-            echo EOF
-          } >> "$GITHUB_ENV"
-
-
       - name: 查看更新日志
         run: |
           echo ${{ steps.create_body.outputs.Body }}
