@@ -3,7 +3,8 @@ name: test_auto_tags
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - main
   workflow_dispatch:
 
 #权限
