@@ -53,7 +53,7 @@ jobs:
         uses: duolabmeng6/action-Releases-log@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          releasesText: ${{ steps.releasesText.outputs.JSON_RESPONSE }}
+          TEXT: ${{ steps.releasesText.outputs.JSON_RESPONSE }}
 
       - name: 查看版本号和更新日志
         run: |
