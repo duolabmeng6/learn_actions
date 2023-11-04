@@ -37,15 +37,14 @@ jobs:
         uses: duolabmeng6/action-autotag-python@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
-
       - name: 获取更新日志
         id: create_body
         uses: duolabmeng6/action-Releases-log@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 查看版本号和更新日志
         run: |
+          echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
           echo "${{ steps.create_body.outputs.Body }}"
 
       - name: 发布文件
