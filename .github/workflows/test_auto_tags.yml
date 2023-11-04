@@ -53,7 +53,7 @@ jobs:
         uses: duolabmeng6/action-Releases-log@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TEXT: ${{ JSON_RESPONSE }}
+          TEXT: "什么东西啊好烦{{变更内容}}"
 
       - name: 查看版本号和更新日志
         run: |
