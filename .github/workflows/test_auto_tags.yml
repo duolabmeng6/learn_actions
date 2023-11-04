@@ -37,16 +37,29 @@ jobs:
         uses: duolabmeng6/action-autotag-python@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 读取发布模板
+        id: create_releasesText
+        run: |
+          {
+            echo 'releasesText<<EOF'
+            cat .github/releasesText.md
+            echo EOF
+          } >> "$GITHUB_ENV"
+
       - name: 获取更新日志
         id: create_body
         uses: duolabmeng6/action-Releases-log@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TEXT: "abc"
+          TEXT: ${{ steps.releasesText.outputs.releasesText }}
+          
       - name: 查看版本号和更新日志
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
           echo "${{ steps.create_body.outputs.Body }}"
+          echo "${{ steps.releasesText.outputs.releasesText }}"
+
+          
 
       - name: 发布文件
         uses: ncipollo/release-action@v1
