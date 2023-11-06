@@ -47,6 +47,7 @@ jobs:
           FILE: .github/releasesText.md
           KEYS: bug,改进,优化,新增,删除
 
+          
       - name: 查看版本号和更新日志
         run: |
           echo ${{ format('version={0}', steps.create_version.outputs.NewVersion ) }}
